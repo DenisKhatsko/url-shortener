@@ -1,0 +1,111 @@
+openapi: 3.0.3
+info:
+  title: 'PHP Link Shortener'
+  description: 'The service accept regular (long) URLs, store them, and return a shorter link that redirects to the original URL when accessed'
+  version: 1.0.0
+servers:
+  -
+    url: 'http://127.0.0.1:8000'
+paths:
+  '/api/short/{shortUrl}':
+    get:
+      summary: 'Endpoint to return the specified link match.'
+      operationId: endpointToReturnTheSpecifiedLinkMatch
+      description: ''
+      parameters: []
+      responses:
+        200:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  short_url: 'http://127.0.0.1:8000/short/mgrAPF'
+                  url: 'https://www.google.com/'
+                  visits_count: 1
+                  created_at: '2024-03-21 07:21:46'
+                  updated_at: '2024-03-21 07:22:21'
+                properties:
+                  short_url:
+                    type: string
+                    example: 'http://127.0.0.1:8000/short/mgrAPF'
+                  url:
+                    type: string
+                    example: 'https://www.google.com/'
+                  visits_count:
+                    type: integer
+                    example: 1
+                  created_at:
+                    type: string
+                    example: '2024-03-21 07:21:46'
+                  updated_at:
+                    type: string
+                    example: '2024-03-21 07:22:21'
+      tags:
+        - Endpoints
+      security: []
+    parameters:
+      -
+        in: path
+        name: shortUrl
+        description: ''
+        example: vH5iaL
+        required: true
+        schema:
+          type: string
+  /api/short:
+    post:
+      summary: 'Endpoint to create new short link record.'
+      operationId: endpointToCreateNewShortLinkRecord
+      description: ''
+      parameters: []
+      responses:
+        200:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  short_url: 'http://127.0.0.1:8000/short/mgrAPF'
+                  url: 'https://www.google.com/'
+                  visits_count: 0
+                  created_at: '2024-03-21 07:21:46'
+                  updated_at: '2024-03-21 07:21:46'
+                properties:
+                  short_url:
+                    type: string
+                    example: 'http://127.0.0.1:8000/short/mgrAPF'
+                  url:
+                    type: string
+                    example: 'https://www.google.com/'
+                  visits_count:
+                    type: integer
+                    example: 0
+                  created_at:
+                    type: string
+                    example: '2024-03-21 07:21:46'
+                  updated_at:
+                    type: string
+                    example: '2024-03-21 07:21:46'
+      tags:
+        - Endpoints
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                url:
+                  type: string
+                  description: 'Long url from user. Must be a valid URL. Must be at least 10 characters.'
+                  example: 'http://rosenbaum.com/eius-aut-eos-et-recusandae.html'
+              required:
+                - url
+      security: []
+tags:
+  -
+    name: Endpoints
+    description: ''

@@ -1,0 +1,109 @@
+{
+    "variable": [
+        {
+            "id": "baseUrl",
+            "key": "baseUrl",
+            "type": "string",
+            "name": "string",
+            "value": "http:\/\/127.0.0.1:8000"
+        }
+    ],
+    "info": {
+        "name": "PHP Link Shortener",
+        "_postman_id": "5ceb24fe-a779-4365-83de-fcb5bd02be86",
+        "description": "The service accept regular (long) URLs, store them, and return a shorter link that redirects to the original URL when accessed",
+        "schema": "https:\/\/schema.getpostman.com\/json\/collection\/v2.1.0\/collection.json"
+    },
+    "item": [
+        {
+            "name": "Endpoints",
+            "description": "",
+            "item": [
+                {
+                    "name": "Endpoint to return the specified link match.",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/short\/:shortUrl",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/short\/:shortUrl",
+                            "variable": [
+                                {
+                                    "id": "shortUrl",
+                                    "key": "shortUrl",
+                                    "value": "vH5iaL",
+                                    "description": ""
+                                }
+                            ]
+                        },
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": null,
+                        "description": "",
+                        "auth": {
+                            "type": "noauth"
+                        }
+                    },
+                    "response": [
+                        {
+                            "header": [],
+                            "code": 200,
+                            "body": "{\n \"short_url\": \"http:\/\/127.0.0.1:8000\/short\/mgrAPF\",\n \"url\": \"https:\/\/www.google.com\/\",\n \"visits_count\": 1,\n \"created_at\": \"2024-03-21 07:21:46\",\n \"updated_at\": \"2024-03-21 07:22:21\"\n}",
+                            "name": ""
+                        }
+                    ]
+                },
+                {
+                    "name": "Endpoint to create new short link record.",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/short",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/short"
+                        },
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\"url\":\"http:\\\/\\\/rosenbaum.com\\\/eius-aut-eos-et-recusandae.html\"}"
+                        },
+                        "description": "",
+                        "auth": {
+                            "type": "noauth"
+                        }
+                    },
+                    "response": [
+                        {
+                            "header": [],
+                            "code": 200,
+                            "body": "{\n\"short_url\": \"http:\/\/127.0.0.1:8000\/short\/mgrAPF\",\n\"url\": \"https:\/\/www.google.com\/\",\n\"visits_count\": 0,\n\"created_at\": \"2024-03-21 07:21:46\",\n\"updated_at\": \"2024-03-21 07:21:46\"\n}",
+                            "name": ""
+                        }
+                    ]
+                }
+            ]
+        }
+    ],
+    "auth": {
+        "type": "noauth"
+    }
+}
