@@ -43,7 +43,7 @@ class UrlShortenerService
 
             } catch (UniqueConstraintViolationException) {
                 if ($retry >= $createRetries) {
-                    throw new DatabaseExeption('Create attempts exceeds maximum assigned as ' . self::RETRIES);
+                    throw new DatabaseExeption('Create attempts exceeds maximum assigned as ' . $createRetries);
                 }
             }
         }
